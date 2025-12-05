@@ -25,5 +25,10 @@ connectDB()
     process.exit(1);
   });
 
+  app.get("/", (req, res) => {
+  res.send("✅ Backend is live on Vercel");
+});
+
+
 module.exports = { io };
 
