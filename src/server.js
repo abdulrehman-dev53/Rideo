@@ -1,37 +1,3 @@
-// require("dotenv").config();
-// const http = require("http");
-// const app = require("./app");
-// const connectDB = require("./config/db");
-
-// const server = http.createServer(app);
-
-// const { Server } = require("socket.io");
-// const io = new Server(server, {
-//   cors: { origin: "*" }
-// });
-
-// // Initialize sockets
-// const trackingSocket = require("./utils/tracking.socket.js");
-// trackingSocket(io);
-
-// const PORT = process.env.PORT || 5000;
-
-// connectDB()
-//   .then(() => {
-//     server.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-//   })
-//   .catch((err) => {
-//     console.error("❌ DB connection failed:", err);
-//     process.exit(1);
-//   });
-
-//   app.get("/", (req, res) => {
-//   res.send("✅ Backend is live on Vercel");
-// });
-
-
-// module.exports = { io };
-
 require("dotenv").config();
 const http = require("http");
 const app = require("./app");
@@ -44,7 +10,7 @@ const io = new Server(server, {
   cors: { origin: "*" }
 });
 
-// Initialize sockets
+// ✅ Initialize sockets
 const trackingSocket = require("./utils/tracking.socket.js");
 trackingSocket(io);
 
@@ -58,11 +24,17 @@ console.log("FIREBASE_CLIENT_EMAIL:", process.env.FIREBASE_CLIENT_EMAIL);
 console.log("FIREBASE_PRIVATE_KEY exists:", !!process.env.FIREBASE_PRIVATE_KEY);
 console.log("GOOGLE_MAPS_API_KEY exists:", !!process.env.GOOGLE_MAPS_API_KEY);
 
+// ✅ Count all environment variables
+console.log("✅ ENV count:", Object.keys(process.env).length);
+
 const PORT = process.env.PORT || 5000;
 
+// ✅ Connect to MongoDB and start server
 connectDB()
   .then(() => {
-    server.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+    server.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
   })
   .catch((err) => {
     console.error("❌ DB connection failed:", err);
@@ -80,4 +52,3 @@ app.get("/", (req, res) => {
 });
 
 module.exports = { io };
-
