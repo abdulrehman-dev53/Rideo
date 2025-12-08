@@ -3,15 +3,5 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
-# Vercel build output
-.vercel/
-
-# Logs
-logs/
-*.log
-
-# OS files
-.DS_Store
-Thumbs.db
 
 ServiceAccountKey.js.json
