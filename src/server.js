@@ -26,8 +26,6 @@ console.log("GOOGLE_MAPS_API_KEY exists:", !!process.env.GOOGLE_MAPS_API_KEY);
 console.log("✅ ENV count:", Object.keys(process.env).length);
 
 const PORT = process.env.PORT || 5000;
-
-// ✅ Connect to MongoDB and start server
 connectDB()
   .then(() => {
     server.listen(PORT, () => {
